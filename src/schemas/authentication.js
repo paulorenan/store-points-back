@@ -4,7 +4,7 @@ require('dotenv').config();
 const secret = process.env.SECRET;
 
 const jwtConfig = {
-  expiresIn: '7d'
+  expiresIn: '8y',
 };
 
 const generateToken = (user) => {
