@@ -24,13 +24,13 @@ module.exports = {
     }
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
+    "username": DB_USERNAME,
+    "password": PASSWORD_DB,
+    "database": DATABASE,
+    "host": HOST,
     "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      }
+    "ssl": {
+      "rejectUnauthorized": false
     }
   }
 }
