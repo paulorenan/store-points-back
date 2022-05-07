@@ -33,7 +33,7 @@ const User = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  });
+  }, { tableName: 'users' });
 
   return user;
 };

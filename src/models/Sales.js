@@ -24,7 +24,7 @@ const Sale = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  });
+  }, { tableName: 'sales' });
   return sale;
 }
 module.exports = Sale;

@@ -20,7 +20,7 @@ const Product = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-  });
+  }, { tableName: 'products' });
 
   return product;
 };
