@@ -6,7 +6,7 @@ const Sale = (sequelize, DataTypes) => {
       references: {
         model: 'users',
         key: 'id'
-      }
+      },
     },
     product_id: {
       type: DataTypes.INTEGER,
@@ -25,6 +25,18 @@ const Sale = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
   }, { tableName: 'sales' });
+
+  sale.associate = (models) => {
+    sale.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      as: 'user'
+    });
+    sale.belongsTo(models.Product, {
+      foreignKey: 'product_id',
+      as: 'product'
+    });
+  }
+
   return sale;
 }
 module.exports = Sale;

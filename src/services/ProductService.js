@@ -19,8 +19,19 @@ const createProduct = async (product) => {
   return productData;
 };
 
+const getProductPriceById = async (productId) => {
+  const product = await Product.findOne({
+    where: {
+      id: productId
+    },
+    attributes: ['price']
+  });
+  return product.price;
+}
+
 module.exports = {
   getProducts,
-  createProduct
+  createProduct,
+  getProductPriceById
 };
 

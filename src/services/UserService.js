@@ -20,7 +20,7 @@ const getUsersRoleUser = async () => {
     attributes: { exclude: ['password'] }
   });
   return userData;
-}
+};
 
 const updateCoins = async (userId, coins) => {
   const userData = await User.update({
@@ -46,12 +46,42 @@ const createUser = async (user) => {
     return userData;
   } catch (e) {
     return null;
-  }
+  };
+};
+
+const getUserById = async (userId) => {
+  const userData = await User.findOne({
+    where: {
+      id: userId
+    },
+    attributes: { exclude: ['password'] }
+  });
+  return userData;
+};
+
+const getUserCoins = async (userId) => {
+  const userData = await User.findOne({
+    where: {
+      id: userId
+    },
+    attributes: ['coins']
+  });
+  return userData.coins;
+};
+
+const getAllUsers = async () => {
+  const userData = await User.findAll({
+    attributes: { exclude: ['password'] }
+  });
+  return userData;
 }
 
 module.exports = {
   userLogin,
   getUsersRoleUser,
   updateCoins,
-  createUser
+  createUser,
+  getUserById,
+  getUserCoins,
+  getAllUsers
 };
