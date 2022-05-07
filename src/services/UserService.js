@@ -35,14 +35,18 @@ const updateCoins = async (userId, coins) => {
 
 const createUser = async (user) => {
   const { name, email, password } = user;
-  const userData = await User.create({
-    name,
-    email,
-    password,
-    role: 'user',
-    coins: 1000
-  });
-  return userData;
+  try {
+    const userData = await User.create({
+      name,
+      email,
+      password,
+      role: 'user',
+      coins: 1000
+    });
+    return userData;
+  } catch (e) {
+    return null;
+  }
 }
 
 module.exports = {
