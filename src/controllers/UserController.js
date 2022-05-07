@@ -17,7 +17,10 @@ const createUser = async (req, res) => {
     role: user.role
   }
   const token = auth.generateToken(user);
-  return res.status(200).json({ newUser, token });
+  return res.status(200).json({ 
+    user: newUser,
+    token
+  });
 };
 
 module.exports = {
