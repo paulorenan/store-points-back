@@ -74,7 +74,18 @@ const getAllUsers = async () => {
     attributes: { exclude: ['password'] }
   });
   return userData;
-}
+};
+
+const getUserByIdAndEmail = async (userId, email) => {
+  const userData = await User.findOne({
+    where: {
+      id: userId,
+      email
+    },
+    attributes: { exclude: ['password'] }
+  });
+  return userData;
+};
 
 module.exports = {
   userLogin,
@@ -83,5 +94,6 @@ module.exports = {
   createUser,
   getUserById,
   getUserCoins,
-  getAllUsers
+  getAllUsers,
+  getUserByIdAndEmail
 };
