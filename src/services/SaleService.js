@@ -30,7 +30,8 @@ const getSalesByUser = async (userId) => {
       model: Product,
       as: 'product',
       attributes: ['name', 'price']
-    }]
+    }],
+    order: [['createdAt', 'DESC']]
   });
   return sales;
 };
