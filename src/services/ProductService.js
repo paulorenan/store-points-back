@@ -2,7 +2,8 @@ const { Product } = require('../models');
 
 const getProducts = async () => {
   const products = await Product.findAll({
-    attributes: { exclude: ['createdAt', 'updatedAt'] }
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
+    order: [['id', 'DESC']]
   });
   return products;
 };
