@@ -23,6 +23,34 @@ const createUser = async (req, res) => {
   });
 };
 
+const getAllUsers = async (req, res) => {
+  const users = await UserService.getAllUsers();
+  return res.status(200).json({ users });
+};
+
+const updateUserRoleAndCoins = async (req, res) => {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
+  const user = auth.verifyToken(token);
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+  if (user.role !== 'admin') {
+    return res.status(403).json({ message: 'Not authorized' });
+  }
+  const { userId } = req.params;
+  const { role, coins } = req.body;
+  const updatedUser = await UserService.updateUserRoleAndCoins(userId, role, coins);
+  if (!updatedUser) {
+    return res.status(401).json({ message: 'Invalid user' });
+  }
+  return res.status(200).json({ message: 'User updated' });
+}
+
 module.exports = {
-  createUser
+  createUser,
+  getAllUsers,
+  updateUserRoleAndCoins,
 };

@@ -71,7 +71,8 @@ const getUserCoins = async (userId) => {
 
 const getAllUsers = async () => {
   const userData = await User.findAll({
-    attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] },
+    order: [['createdAt', 'DESC']]
   });
   return userData;
 };
@@ -87,6 +88,18 @@ const getUserByIdAndEmail = async (userId, email) => {
   return userData;
 };
 
+const updateUserRoleAndCoins = async (userId, role, coins) => {
+  const userData = await User.update({
+    role,
+    coins
+  }, {
+    where: {
+      id: userId
+    }
+  });
+  return userData;
+}
+
 module.exports = {
   userLogin,
   getUsersRoleUser,
@@ -95,5 +108,6 @@ module.exports = {
   getUserById,
   getUserCoins,
   getAllUsers,
-  getUserByIdAndEmail
+  getUserByIdAndEmail,
+  updateUserRoleAndCoins,
 };
