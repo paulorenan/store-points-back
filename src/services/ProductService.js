@@ -27,11 +27,32 @@ const getProductPriceById = async (productId) => {
     attributes: ['price']
   });
   return product.price;
+};
+
+const updateProduct = async (productId, product) => {
+  const { name, price } = product;
+  const productData = await Product.update({
+      name,
+      price,
+      updatedAt: new Date()
+    }, {
+      where: { id: productId }
+    });
+  return productData;
+}
+
+const deleteProduct = async (productId) => {
+  const productData = await Product.destroy({
+    where: { id: productId }
+  });
+  return productData;
 }
 
 module.exports = {
   getProducts,
   createProduct,
-  getProductPriceById
+  getProductPriceById,
+  updateProduct,
+  deleteProduct,
 };
 
