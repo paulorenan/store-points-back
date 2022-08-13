@@ -1,4 +1,4 @@
-const Product = (sequelize, DataTypes) => {
+const Product = (sequelize, DataTypes) => { //a
   const product = sequelize.define('Product', {
     name: {
       type: DataTypes.STRING,
