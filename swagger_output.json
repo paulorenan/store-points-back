@@ -5,7 +5,7 @@
     "title": "Store Points API",
     "description": "API to manage Store Points"
   },
-  "host": "store-points-back.herokuapp.com",
+  "host": "store-points-back.vercel.app",
   "basePath": "/",
   "schemes": [
     "https"
