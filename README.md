@@ -12,4 +12,4 @@ Back-End para gerenciar um site de loja de produtos e controle de pontos
 
 ## Documentação da API
 
-[Documentação](https://store-points-back.herokuapp.com/api-docs/)
+[Documentação](https://store-points-back.vercel.app/api-docs/)
